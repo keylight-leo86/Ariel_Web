@@ -1,0 +1,24 @@
+---
+import { SITE } from '../site.config';
+import { url } from '../utils/url';
+
+const current = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => {
+  const target = url(href).replace(/\/$/, '') || '/';
+  return href === '/' ? current === target : current.startsWith(target);
+};
+---
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href={url('/')}>{SITE.title}</a>
+    <nav aria-label="主导航">
+      <ul class="nav-list">
+        {SITE.nav.map((item) => (
+          <li>
+            <a href={url(item.href)} aria-current={isActive(item.href) ? 'page' : undefined}>{item.label}</a>
+          </li>
+        ))}
+      </ul>
+    </nav>
+  </div>
+</header>
