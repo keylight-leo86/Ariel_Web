@@ -1,10 +1,11 @@
-// 社团固定数据。部门名称和简介逐字取自招新海报，修改前请对照海报。
+// 社团固定数据。前八个部门的名称和简介逐字取自招新海报，修改前请对照海报；
+// 音游部和 Others 是海报之后补充的，文字取自社团提供的部门卡片图。
 export type Department = {
   id: string;
   name: string;
-  /** 海报上的两行简介 */
+  /** 两行简介 */
   lines: [string, string];
-  /** 海报中部门标签的配色：pink / blue 交替 */
+  /** 部门标签的配色：pink / blue 交替 */
   tone: 'pink' | 'blue';
 };
 
@@ -17,7 +18,16 @@ export const DEPARTMENTS: Department[] = [
   { id: 'writing', name: '文案部', lines: ['茶绘交流、活动文案编写', '同人创作'], tone: 'blue' },
   { id: 'outreach', name: '外联部', lines: ['安排与联络社团联动活动', '与更多同好相遇'], tone: 'pink' },
   { id: 'photo', name: '摄影部', lines: ['负责活动摄影', '记录每一次相聚'], tone: 'blue' },
+  { id: 'rhythm', name: '音游部', lines: ['音游出勤、谱面分享', '随节拍跃动，与同好共振'], tone: 'pink' },
 ];
+
+/** 不属于任何正式部门的兴趣，编号固定为 00，排在部门列表最后，不计入部门数量 */
+export const DEPARTMENT_OTHERS: Department = {
+  id: 'others',
+  name: 'Others',
+  lines: ['番剧交流、桌游集结', '只要热爱，随时为你再建新部'],
+  tone: 'blue',
+};
 
 /** 海报原文 */
 export const INTRO = [
@@ -25,7 +35,7 @@ export const INTRO = [
   '按自己的兴趣加入部门，也可以一起入群聊天。',
   '大家都很友善，欢迎带着你的热爱来玩！',
 ];
-export const DEPARTMENTS_HEADING = { title: '找到你的热爱', sub: '八个部门，总有一个让你心动。', en: 'DEPARTMENTS' };
+export const DEPARTMENTS_HEADING = { title: '找到你的热爱', sub: '九个部门，总有一个让你心动。', en: 'DEPARTMENTS' };
 export const ACTIVITIES_HEADING = { title: '一起，让日常闪闪发光', en: 'ACTIVITIES' };
 export const ACTIVITY_NOTE = '具体活动可以入群后咨询各部门部长哦。';
 

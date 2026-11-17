@@ -1,10 +1,15 @@
 ---
-import { DEPARTMENTS } from '../data/club';
+import { DEPARTMENTS, DEPARTMENT_OTHERS } from '../data/club';
+
+const items = [
+  ...DEPARTMENTS.map((d, i) => ({ ...d, no: String(i + 1).padStart(2, '0') })),
+  { ...DEPARTMENT_OTHERS, no: '00' },
+];
 ---
 <ol class="dept-list">
-  {DEPARTMENTS.map((d, i) => (
+  {items.map((d) => (
     <li class="dept-item" id={d.id}>
-      <span class="dept-item__no">{String(i + 1).padStart(2, '0')}</span>
+      <span class="dept-item__no">{d.no}</span>
       <span class={`dept-item__name pill pill--${d.tone}`}>{d.name}</span>
       <p class="dept-item__desc">{d.lines[0]}<br />{d.lines[1]}</p>
     </li>

@@ -20,5 +20,5 @@ const { Content } = await render(post);
     {post.data.cover && <img src={url(post.data.cover)} alt={post.data.coverAlt ?? ''} />}
     <Content />
   </article>
-  <p><a href={url('/news')}>← 返回社团动态</a></p>
+  <p><a href={url('/news')}>← 返回社团动态</a> · <a href={url('/join')}>加入我们 →</a></p>
 </BaseLayout>

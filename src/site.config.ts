@@ -8,7 +8,7 @@ export const SITE = {
   slogan: '把热爱，变成相遇。',
   tagline: '同频的人，在这里相遇',
   motto: 'MEET YOUR PEOPLE',
-  description: 'Ariel动漫社是湖北工业大学的 ACG 爱好者社团，下设漫画、wota、宅舞、COS、轻音、文案、外联、摄影八个部门。',
+  description: 'Ariel动漫社是湖北工业大学的 ACG 爱好者社团，下设漫画、wota、宅舞、COS、轻音、文案、外联、摄影、音游九个部门。',
   lang: 'zh-CN',
   nav: [
     { label: '首页', href: '/' },
