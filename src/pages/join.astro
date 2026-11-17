@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import JoinCard from '../components/JoinCard.astro';
+import { SITE } from '../site.config';
+import { DEPARTMENTS_HEADING, INTRO, ACTIVITY_NOTE } from '../data/club';
+import { url } from '../utils/url';
+---
+<BaseLayout title="加入我们" description="加入 Ariel动漫社 QQ 群">
+  <article class="prose">
+    <h1>加入我们</h1>
+    <p>{INTRO[0]}{INTRO[2]}</p>
+    <ol>
+      <li>加入社团 QQ 群 <strong>{SITE.contact.qqGroup}</strong>，搜索群号或扫下方二维码都可以。</li>
+      <li>入群后，按自己的兴趣咨询各部门部长。{DEPARTMENTS_HEADING.sub}</li>
+      <li>{ACTIVITY_NOTE}</li>
+    </ol>
+  </article>
+  <JoinCard />
+  <figure class="poster">
+    <img src={url('/images/recruit-poster.webp')} alt="Ariel动漫社招新海报" width="800" height="2000" />
+  </figure>
+</BaseLayout>

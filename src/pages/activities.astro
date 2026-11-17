@@ -1,0 +1,24 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import PhotoGrid from '../components/PhotoGrid.astro';
+import { ACTIVITIES_HEADING, ACTIVITY_TAGS, ACTIVITY_POINTS, ACTIVITY_NOTE } from '../data/club';
+import { url } from '../utils/url';
+---
+<BaseLayout title="活动" description="Ariel动漫社的社团活动">
+  <SectionTitle no="02" title={ACTIVITIES_HEADING.title} en={ACTIVITIES_HEADING.en} as="h1" />
+  <p class="activity-tags">{ACTIVITY_TAGS.join(' · ')}</p>
+  <ul class="activity-points">{ACTIVITY_POINTS.map((p) => <li>{p}</li>)}</ul>
+  <PhotoGrid />
+  <article class="prose">
+    <p>
+      {ACTIVITY_TAGS.join('、')}，都是我们一起玩的时候。{ACTIVITY_POINTS[0]}，有空就来凑个热闹。
+    </p>
+    <p>
+      喜欢逛漫展的话，有{ACTIVITY_POINTS[1]}；想自己摆摊的话，{ACTIVITY_POINTS[2]}。
+    </p>
+    <p>
+      {ACTIVITY_NOTE}<a href={url('/join')}>去加入我们 →</a>
+    </p>
+  </article>
+</BaseLayout>

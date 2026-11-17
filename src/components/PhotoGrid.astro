@@ -1,0 +1,11 @@
+---
+import { ACTIVITY_PHOTOS } from '../data/club';
+import { url } from '../utils/url';
+---
+<div class="photo-grid">
+  {ACTIVITY_PHOTOS.map((p) => (
+    <figure class="photo">
+      <img src={url(p.src)} alt={p.alt} loading="lazy" width="171" height="99" />
+    </figure>
+  ))}
+</div>

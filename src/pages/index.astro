@@ -1,32 +1,41 @@
 ---
-import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import PostCard from '../components/PostCard.astro';
-import ProjectCard from '../components/ProjectCard.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import DepartmentList from '../components/DepartmentList.astro';
+import PhotoGrid from '../components/PhotoGrid.astro';
+import JoinCard from '../components/JoinCard.astro';
+import { SITE } from '../site.config';
+import { INTRO, DEPARTMENTS_HEADING, ACTIVITIES_HEADING, ACTIVITY_TAGS, ACTIVITY_POINTS, ACTIVITY_NOTE } from '../data/club';
 import { url } from '../utils/url';
-
-const posts = (await getCollection('blog', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 3);
-const projects = (await getCollection('projects', ({ data }) => data.featured))
-  .sort((a, b) => a.data.order - b.data.order)
-  .slice(0, 3);
 ---
 <BaseLayout>
   <section class="hero">
-    <h1>你好，我是 Ariel</h1>
-    <p>这是我的个人站点，用来放笔记、练习和示例项目。经历和联系方式还没整理好，先把内容慢慢补上。</p>
+    <p class="hero__school">{SITE.school}</p>
+    <p class="hero__en">{SITE.titleEn}</p>
+    <h1 class="hero__title">{SITE.title}</h1>
+    <p class="hero__badge">欢迎新同学！</p>
+    <p class="hero__tagline">{SITE.tagline}</p>
+    <p class="hero__slogan">{SITE.slogan}</p>
+    <a class="btn btn--primary" href={url('/join')}>加入我们</a>
+  </section>
+
+  <section class="intro-block">
+    {INTRO.map((line) => <p>{line}</p>)}
   </section>
 
   <section>
-    <h2>精选项目</h2>
-    <div class="grid">{projects.map((p) => <ProjectCard project={p} />)}</div>
-    <p><a href={url('/projects')}>全部项目 →</a></p>
+    <SectionTitle no="01" title={DEPARTMENTS_HEADING.title} sub={DEPARTMENTS_HEADING.sub} en={DEPARTMENTS_HEADING.en} />
+    <DepartmentList />
+    <p><a href={url('/departments')}>了解部门 →</a></p>
   </section>
 
   <section>
-    <h2>最新文章</h2>
-    <div class="grid">{posts.map((p) => <PostCard post={p} />)}</div>
-    <p><a href={url('/blog')}>全部文章 →</a></p>
+    <SectionTitle no="02" title={ACTIVITIES_HEADING.title} en={ACTIVITIES_HEADING.en} />
+    <p class="activity-tags">{ACTIVITY_TAGS.join(' · ')}</p>
+    <ul class="activity-points">{ACTIVITY_POINTS.map((p) => <li>{p}</li>)}</ul>
+    <PhotoGrid />
+    <p class="note">{ACTIVITY_NOTE}</p>
   </section>
+
+  <JoinCard />
 </BaseLayout>

@@ -1,0 +1,37 @@
+---
+// 「欢迎你的加入」卡片：QQ 群号 + 二维码，对应海报底部。
+import { SITE } from '../site.config';
+import { url } from '../utils/url';
+---
+<section class="join-card" aria-labelledby="join-card-title">
+  <div class="join-card__text">
+    <p class="join-card__club">{SITE.title}</p>
+    <h2 id="join-card-title" class="join-card__title">欢迎你的加入！</h2>
+    <p class="join-card__qq">
+      <span class="join-card__qq-label">QQ群</span>
+      <span class="join-card__qq-no">{SITE.contact.qqGroup}</span>
+      <button class="join-card__copy" type="button" data-copy={SITE.contact.qqGroup}>复制群号</button>
+    </p>
+    <p class="join-card__motto">{SITE.titleEn} · {SITE.motto}</p>
+  </div>
+  <figure class="join-card__qr">
+    <img src={url(SITE.contact.qqQrImage)} alt={`QQ 群 ${SITE.contact.qqGroup} 二维码`} width="176" height="180" loading="lazy" />
+    <figcaption>扫码加入 QQ 群</figcaption>
+  </figure>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-copy]').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const text = btn.dataset.copy ?? '';
+      const label = btn.textContent;
+      try {
+        await navigator.clipboard.writeText(text);
+        btn.textContent = '已复制';
+      } catch {
+        btn.textContent = text;
+      }
+      setTimeout(() => (btn.textContent = label), 1600);
+    });
+  });
+</script>

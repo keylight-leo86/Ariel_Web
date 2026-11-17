@@ -1,0 +1,21 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import DepartmentList from '../components/DepartmentList.astro';
+import { DEPARTMENTS_HEADING, INTRO } from '../data/club';
+import { url } from '../utils/url';
+---
+<BaseLayout title="部门" description="Ariel动漫社的八个部门">
+  <SectionTitle no="01" title={DEPARTMENTS_HEADING.title} sub={DEPARTMENTS_HEADING.sub} en={DEPARTMENTS_HEADING.en} as="h1" />
+  <DepartmentList />
+  <article class="prose">
+    <h2>怎么选部门</h2>
+    <p>
+      {DEPARTMENTS_HEADING.sub}看看上面每个部门在做什么，挑一个最让你心动的就好。
+    </p>
+    <p>
+      {INTRO[1]}一时定不下来也没关系，可以先入群聊天，问问各部门部长，再决定加入哪一个。
+    </p>
+    <p><a href={url('/join')}>去加入我们 →</a></p>
+  </article>
+</BaseLayout>

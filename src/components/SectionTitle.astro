@@ -1,0 +1,14 @@
+---
+// 带编号的板块标题，对应海报里的「01 找到你的热爱 —— DEPARTMENTS」样式。
+interface Props { no?: string; title: string; sub?: string; en?: string; as?: 'h1' | 'h2' }
+const { no, title, sub, en, as: Tag = 'h2' } = Astro.props;
+---
+<div class="section-title">
+  <div class="section-title__row">
+    {no && <span class="section-title__no">{no}</span>}
+    <Tag class="section-title__text">{title}</Tag>
+    <span class="section-title__line" aria-hidden="true"></span>
+    {en && <span class="section-title__en" aria-hidden="true">{en}</span>}
+  </div>
+  {sub && <p class="section-title__sub">{sub}</p>}
+</div>

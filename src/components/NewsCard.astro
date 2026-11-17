@@ -1,11 +1,12 @@
 ---
 import type { CollectionEntry } from 'astro:content';
 import { url, formatDate } from '../utils/url';
-interface Props { post: CollectionEntry<'blog'> }
+interface Props { post: CollectionEntry<'news'> }
 const { post } = Astro.props;
 ---
-<article class="card">
+<article class="news-card">
   <time datetime={post.data.date.toISOString()}>{formatDate(post.data.date)}</time>
-  <h3><a href={url(`/blog/${post.id}`)}>{post.data.title}</a></h3>
+  <h3><a href={url(`/news/${post.id}`)}>{post.data.title}</a></h3>
   <p>{post.data.description}</p>
+  {post.data.tags.length > 0 && <ul class="tags">{post.data.tags.map((t) => <li>{t}</li>)}</ul>}
 </article>
