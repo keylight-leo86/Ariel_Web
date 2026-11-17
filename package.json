@@ -2,6 +2,7 @@
   "name": "ariel-web",
   "type": "module",
   "private": true,
+  "license": "UNLICENSED",
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
